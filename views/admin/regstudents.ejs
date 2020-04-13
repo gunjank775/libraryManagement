@@ -1,0 +1,85 @@
+<%- include('../partials/header2.ejs') %>
+    <div class="content-wrapper">
+         <div class="container">
+        <div class="row pad-botm">
+            <div class="col-md-12">
+                <h4 class="header-line">Manage Reg Students</h4>
+    </div>
+
+
+        </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                          Reg Students
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Student ID</th>
+                                            <th>Student Name</th>
+                                            <th>Email id </th>
+                                            <th>Mobile Number</th>
+                                            <th>Reg Date</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <% results.forEach(function(result){ %>       
+                                          
+                                              <tr class="odd gradeX">
+                                              <td class="center"><%= count++ %></td>
+                                              <td class="center"><%= result.StudentId %></td>
+                                              <td class="center"><%= result.name %></td>
+                                              <td class="center"><%= result.email %></td>
+                                              <td class="center"><%= result.mobile_no %></td>
+                                              <td class="center"><%= result.reg_date.toLocaleDateString() %></td>
+                                             <% if(result.status==1) { %>
+                                                <td class="center">Active</td>
+                                              <% } else { %>
+                                                <td class="center">Blocked</td>
+                                              <%   }  %>
+                                              <td class="center">
+                                                <% if(result.status==1) { %>
+                                                 
+                                                    <form action="/admin/regstudents/<%= result.id %>" method="POST">
+                                                        <input type="submit" class="btn btn-danger" value="Inactive"/>
+                                                    </form>
+                                                    
+                                              
+                                              <% } else { %>
+
+                                                 
+                                                <form action="/admin/regstudents/<%= result.id %>" method="POST">
+                                                    <input type="submit" class="btn btn-primary" value="Active"/>
+                                                </form>
+                                              
+                                                    <%   }  %>
+                                                </tr>     
+                                              <%});%> 
+                                                       
+                                             </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+
+
+            
+    </div>
+    </div>
+     <%- include('../partials/footer2.ejs') %>
+</body>
+</html>
+
+

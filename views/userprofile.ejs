@@ -1,0 +1,76 @@
+<%- include('./partials/header.ejs') %>
+<!-- MENU SECTION END-->
+    <div class="content-wrapper">
+         <div class="container">
+        <div class="row pad-botm">
+            <div class="col-md-12">
+                <h4 class="header-line">My Profile</h4>
+            </div>
+        </div>
+             <div class="row">
+      <div class="col-md-9 col-md-offset-1">
+               <div class="panel panel-danger">
+                        <div class="panel-heading">
+                           My Profile
+                        </div>
+                        <div class="panel-body">
+                           
+<div class="form-group">
+<label>Student ID : </label>
+<%= currentUser.id %>
+</div>
+
+<div class="form-group">
+<label>Reg Date : </label>
+<%= currentUser.reg_date%>
+</div>
+<div class="form-group">
+<label>Last Updation Date : </label>
+<%= currentUser.update_date %>
+</div>
+
+
+
+<div class="form-group">
+<label>Profile Status : </label>
+
+<span style="color: green">Active</span>
+
+</div>
+
+
+
+
+
+                                        
+
+
+<form action="/userupdate" method="POST">
+
+    <div class="form-group">
+        <label>Enter Full Name</label>
+        <input class="form-control" type="text" name="fullname" value="<%= currentUser.name %>" autocomplete="off" required />
+        </div>
+
+        <div class="form-group">
+            <label>Mobile Number :</label>
+            <input class="form-control" type="text" name="mobileno" maxlength="10" value="<%= currentUser.mobile_no %>" autocomplete="off" required />
+            </div>
+
+            <div class="form-group">
+                <label>Enter Email</label>
+                <input class="form-control" type="email" name="email" id="emailid" value="<%= currentUser.email %>"  autocomplete="off" required readonly />
+                </div>
+
+<button  class="btn btn-primary" >Update Now </button>
+</form>
+
+
+                                   
+                            </div>
+                        </div>
+                            </div>
+        </div>
+    </div>
+    </div>
+    <%- include('./partials/footer.ejs') %>

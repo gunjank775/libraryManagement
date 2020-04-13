@@ -1,0 +1,60 @@
+<%- include('../partials/header2.ejs') %>
+    <div class="content-wrapper">
+         <div class="container">
+                <div class="row pad-botm">
+                        <div class="col-md-12">
+                            <h4 class="header-line">Issued Book Details</h4>
+                        </div>
+                </div>
+<div class="row">
+<div class="col-md-10 col-sm-6 col-xs-12 col-md-offset-1"">
+<div class="panel panel-info">
+<div class="panel-heading">
+Issued Book Details
+</div>
+<div class="panel-body">
+        <form action="/admin/updateissuedbook/<%=results[0].rid%>" method="POST">
+                <div class="form-group">
+                  <label>Student Name :</label><%=results[0].name %>
+                </div>
+
+                <div class="form-group">
+                   <label>Book Name :</label><%=results[0].BookName %>
+                </div>
+
+                <div class="form-group">
+                 <label>ISBN :</label><%=results[0].ISBNNumber %>
+                </div>
+
+                <div class="form-group">
+                   <label>Book Issued Date :</label><%=results[0].IssuesDate.toLocaleDateString() %>
+                </div>
+
+                <div class="form-group">
+                    <label>Book Returned Date :</label>
+                   <% if(results[0].RetrunStatus==0){ %> 
+                    Not returned Yet
+                    <% } else { %>
+                        <%= results[0].ReturnDate.toLocaleDateString() %>
+                        <% } %>
+                </div>
+
+                <div class="form-group">
+                <label>Fine (in USD) :</label>
+                <input class="form-control" type="text" name="fine" id="fine"  required />
+                </div>
+                <% if(results[0].RetrunStatus==0){ %> 
+                <button type="submit" name="return" id="submit" class="btn btn-info">Return Book </button>
+                <% } else { %>
+                    <button type="submit" name="return" id="submit" class="btn btn-info">Update Fine </button>
+                    <% } %>
+                
+                </div>
+        </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    <%- include('../partials/footer2.ejs') %>

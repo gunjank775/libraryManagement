@@ -1,0 +1,74 @@
+<%- include('../partials/header2.ejs') %>
+<!-- MENU SECTION END-->
+    <div class="content-wrapper">
+         <div class="container">
+        <div class="row pad-botm">
+            <div class="col-md-12">
+                <h4 class="header-line">UPDATE BOOK</h4>
+            </div>
+        </div>
+<div class="row">
+<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3"">
+<div class="panel panel-info">
+<div class="panel-heading">
+Book Info
+</div>
+<div class="panel-body">
+             <!-- form start -->
+            <form action="/admin/editbook/<%=results[0].bookid%>" method="POST">
+            <div class="form-group">
+            <label>Book Name<span style="color:red;">*</span></label>
+            <input class="form-control" type="text" name="bookname" value="<%= results[0].BookName%>" required />
+            </div>
+
+            <div class="form-group">
+            <label> Category<span style="color:red;">*</span></label>
+            <select class="form-control" name="category" required="required">
+            <option value="<%= results[0].cid %>"><%= results[0].CategoryName %> </option>
+
+            <% categories.forEach(function(category){ %>
+                <% if(category.Status==1 && category.CategoryName!=results[0].CategoryName){ %>
+            <option value="<%= category.id %>"><%= category.CategoryName %></option>
+            <% } %>
+            <%});%> 
+            </select>
+            </div>
+
+
+            <div class="form-group">
+            <label> Author<span style="color:red;">*</span></label>
+            <select class="form-control" name="author" required="required">
+            <option value="<%= results[0].athrid %>"><%= results[0].AuthorName %></option>
+            <% authors.forEach(function(author){ %>
+                <% if(author.AuthorName!=results[0].AuthorName){ %>
+            <option value="<%= author.id %>"><%= author.AuthorName %></option>
+            <% } %>
+            <%});%> 
+            </select>
+            </div>
+
+            <div class="form-group">
+            <label>ISBN Number<span style="color:red;">*</span></label>
+            <input class="form-control" type="text" name="isbn" value="<%= results[0].ISBNNumber %>"  required="required" />
+            <p class="help-block">An ISBN is an International Standard Book Number.ISBN Must be unique</p>
+            </div>
+
+            <div class="form-group">
+            <label>Price in USD<span style="color:red;">*</span></label>
+            <input class="form-control" type="text" name="price" value="<%= results[0].BookPrice %>"  required="required" />
+            </div>
+
+            <button type="submit" name="update" class="btn btn-info">Update </button>
+            </form>
+            <!-- form end -->
+ </div>
+ </div>
+ </div>
+</div>
+ </div>
+ </div>
+     <!-- CONTENT-WRAPPER SECTION END-->
+     <%- include('../partials/footer2.ejs') %>
+</body>
+</html>
+

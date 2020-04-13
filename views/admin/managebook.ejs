@@ -1,0 +1,67 @@
+      <%- include('../partials/header2.ejs') %>
+<!-- MENU SECTION END-->
+    <div class="content-wrapper">
+         <div class="container">
+        <div class="row pad-botm">
+            <div class="col-md-12">
+                <h4 class="header-line">Manage Books</h4>
+             </div>
+        </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           Books Listing
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Book Name</th>
+                                            <th>Category</th>
+                                            <th>Author</th>
+                                            <th>ISBN</th>
+                                            <th>Price</th>
+                                            <th>Action</th>
+                                        </tr>
+                                     </thead>
+                                 <tbody>
+                                    <% results.forEach(function(result){ %>
+                                        <tr class="odd gradeX">
+                                            <td class="center"><%= count++ %></td>
+                                            <td class="center"><%= result.BookName %></td>
+                                            <td class="center"><%= result.CategoryName %></td>
+                                            <td class="center"><%= result.AuthorName %></td>
+                                            <td class="center"><%= result.ISBNNumber %></td>
+                                            <td class="center"><%= result.BookPrice %></td>
+                                            <td class="center">
+                                            <a href="/admin/editbook/<%= result.bookid%>"><button class="btn btn-primary"> Edit</button> 
+                                            <form id="delete-form" action="/admin/deletebook/<%= result.bookid%>" method="POST">  <button class="btn btn-danger"></i> Delete</button>
+                                            </form>
+                                            </td>
+                                        </tr>
+                                        <%});%>  
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+
+
+            
+    </div>
+    </div>
+
+     <!-- CONTENT-WRAPPER SECTION END-->
+     <%- include('../partials/footer2.ejs') %>
+
+</body>
+</html>
+

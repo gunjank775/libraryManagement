@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Online Library Management System | </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="/css/style.css" rel="stylesheet" />
+    <!-- GOOGLE FONT -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+</head>
+<body>
+    <div class="navbar navbar-inverse set-radius-zero" >
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" >
+                    <img src="/img/logo.png" />
+                </a>
+            </div>
+            <% if(currentUser) { %>
+                <div class="right-div">
+                    <a href="/logout" class="btn btn-danger pull-right">LOG OUT  <%= currentUser.name %></a>
+                </div>
+                <% } %>
+        </div>
+    </div>
+   
+      
+</div>
+</div>
+
+
+    <% if(currentUser) { %>
+       
+        <section class="menu-section">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-12">
+                        <div class="navbar-collapse collapse ">
+                            <ul id="menu-top" class="nav navbar-nav navbar-right">
+                                <li><a href="/userdashboard" class="menu-top-active">DASHBOARD</a></li>
+                               
+                              
+                        <li>
+                                    <a href="/userprofile"> My Profile </a>
+                                    
+                                </li>
+                                <li><a href="/userissuedbooks">Issued Books</a></li>
+                              
+    
+                            </ul>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </section>
+        
+
+    <%  } else { %>
+        <section class="menu-section">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12">
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">                        
+                             <li><a href="/adminlogin">Admin Login</a></li>
+                             <li><a href="/">User Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </section>
+       <% } %>
+
+  
